@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr *ngFor='let product of filteredProducts'>
-                <td [title]='product.productName'>{{product.productId}}</td>
+                <td [title]='product.productName'><a [routerLink]="['/products', product.productId]">{{product.productId}}</a></td>
                 <td>{{product.productName| convertToSpace: '-'}}</td>
                 <td>{{product.price | currency: 'EUR':true:'1.2-2'}}</td>
                 <td>{{product.date}}</td>

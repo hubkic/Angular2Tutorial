@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminModule } from './admin/admin.module';
-import { LadComponent } from './lad/lad.component';
-import { CovertToSpacePipe } from './shared/convert-to-space.pipe';
-import { SubladComponent } from './sublad/sublad.component';
+import { ProductsModule } from './products/products.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products/products.component';
+import { ProductGuardService } from './products/product-guard.service';
 
 
 @NgModule({
@@ -18,17 +19,17 @@ import { SubladComponent } from './sublad/sublad.component';
     AppComponent,
     CustomerComponent,
     DashboardComponent,
-    LadComponent,
-    CovertToSpacePipe,
-    SubladComponent
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
     AdminModule,
+    ProductsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

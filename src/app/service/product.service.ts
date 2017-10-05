@@ -1,26 +1,27 @@
 import { Injectable } from "@angular/core";
-import { IProduct } from "../lad/Products";
+import { IProduct } from "../products/lad/Products";
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+
 
 @Injectable()
 export class ProductService{
-    constructor(){
+    
+    private _productUrl = '../assets/products/products.json';
 
+    constructor(private _http: HttpClient){
     }
 
-    getProducts():IProduct[]{
-        return [{
-            "productId":1,
-            "productName": "Prod Name-1",
-            "price": 34.34,
-            "date": "March 18, 2016",
-            "stars" :4
-        },
-        {
-            "productId":2,
-            "productName": "Prod Name-2",
-            "price": 3,
-            "date": "April 03, 2018",
-            "stars":3
-        }];
+    getProducts():Observable<IProduct[]>{
+        return this._http.get<IProduct[]>(this._productUrl)
+                .do(data => console.log('All:'+JSON.stringify(data)))
+                .catch(this.handleError);
+    }
+
+    private handleError(err: HttpErrorResponse){
+        console.log(err.message);
+        return Observable.throw(err.message);
     }
 }

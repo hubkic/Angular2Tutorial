@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { IProduct } from "./Products";
-import { ProductService } from "../service/product.service";
+import { ProductService } from "../../service/product.service";
 
 
 @Component({
@@ -10,16 +10,14 @@ import { ProductService } from "../service/product.service";
 })
 export class LadComponent{
     title:string;
-    show: boolean =false;
+    show: boolean =true;
     filter:string = 'cart';
     filteredProducts: IProduct[];
     products: IProduct[];
+    errorMessage:string;
 
-    constructor(private _products  : ProductService) {
-        this.products = _products.getProducts();
-        this.title = 'Title for Lad component';
-        this.filteredProducts = this.products;
-        this.listFilter = '1';
+    constructor(private _productsService: ProductService) {
+
     }
 
     toggleShow():void{
@@ -44,5 +42,14 @@ export class LadComponent{
     }
     onStarsClicked(msg: string):void{
         this.title = msg;
+    }
+
+    ngOnInit(){
+        this._productsService.getProducts()
+            .subscribe(products => {
+                            this.products = products
+                            this.filteredProducts = this.products;
+                      },error => this.errorMessage = <string> error);
+        this.title = 'Title for Lad component';
     }
 }
