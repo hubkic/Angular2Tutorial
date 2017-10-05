@@ -1,0 +1,28 @@
+<div>
+    <p>
+        {{title}}
+    </p>
+    <button (click)='toggleShow()'>Show </button>
+    <input type="text" [(ngModel)]='listFilter'>
+    {{filter}}
+    <table *ngIf='products && products.length && show'>
+        <thead>
+            <th>Product</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Stars</th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let product of filteredProducts'>
+                <td [title]='product.productName'>{{product.productId}}</td>
+                <td>{{product.productName| convertToSpace: '-'}}</td>
+                <td>{{product.price | currency: 'EUR':true:'1.2-2'}}</td>
+                <td>{{product.date}}</td>
+                <td><app-sublad [stars]='product.stars' (starsClicked)='onStarsClicked($event)'></app-sublad></td>
+            </tr>
+        </tbody>
+    </table>
+    
+          
+</div>
