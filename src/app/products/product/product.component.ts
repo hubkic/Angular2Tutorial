@@ -7,17 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  Id:number;
+  Id: number;
   constructor(private _route: ActivatedRoute,
               private _router: Router) {
    }
 
   ngOnInit() {
-    let id = +this._route.snapshot.paramMap.get('id');
+    const id = +this._route.snapshot.paramMap.get('id');
     this.Id = id;
   }
 
-  onBack():void{
+  onBack(): void{
      this._router.navigate(['/products']);
   }
 

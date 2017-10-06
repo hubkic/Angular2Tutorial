@@ -5,11 +5,11 @@ import { UsersComponent } from './users/users.component';
 import { EmailsComponent } from './emails/emails.component';
 
 const routes: Routes = [
-  {path:'admin',
+  {path: 'admin',
    component: AdminComponent,
-   children:[ 
-     {path:'',component: UsersComponent},
-     {path:'emails',component: EmailsComponent}
+   children: [
+     {path: '', component: UsersComponent},
+     {path: 'emails', component: EmailsComponent}
    ]
   }
 ];

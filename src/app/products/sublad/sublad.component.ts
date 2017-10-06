@@ -7,7 +7,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class SubladComponent implements OnInit {
   @Input()
-  stars:number;
+  stars: number;
 
   @Output()
   starsClicked: EventEmitter<string>= new EventEmitter<string>();
@@ -17,7 +17,7 @@ export class SubladComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick():void {
+  onClick(): void {
     this.starsClicked.emit(`Stars is ${this.stars}`);
   }
 
