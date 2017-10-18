@@ -12,6 +12,7 @@ import { ProductsModule } from './products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { ProductGuardService } from './products/product-guard.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductGuardService } from './products/product-guard.service';
     ProductsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [ProductService, ProductGuardService],
   bootstrap: [AppComponent]
