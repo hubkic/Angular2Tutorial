@@ -2,7 +2,7 @@
     <p>
         {{title}}
     </p>
-    <button (click)='toggleShow()'>Show </button>
+    <button mat-button (click)='toggleShow()'>{{show?'Show':'Hide'}} </button>
     <input type="text" [(ngModel)]='listFilter'>
     {{filter}}
     <table *ngIf='products && products.length && show'>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr *ngFor='let product of filteredProducts'>
-                <td [title]='product.productName'><a [routerLink]="['/products', product.productId]">{{product.productId}}</a></td>
+                <td [title]='product.productName'><button mat-button [routerLink]="['/products', product.productId]">{{product.productId}}</button></td>
                 <td>{{product.productName| convertToSpace: '-'}}</td>
                 <td>{{product.price | currency: 'EUR':true:'1.2-2'}}</td>
                 <td>{{product.date}}</td>
