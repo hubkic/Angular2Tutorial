@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { ProductGuardService } from './products/product-guard.service';
 import { SharedModule } from './shared/shared.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    FlexLayoutModule 
   ],
   providers: [ProductService, ProductGuardService],
   bootstrap: [AppComponent]
